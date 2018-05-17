@@ -6,7 +6,7 @@ hints:
   DockerRequirement:
     dockerPull: synapse_python
     
-baseCommand: [ python, /usr/local/bin/synget.py ]
+baseCommand: [ python, /usr/local/bin/syn_get.py ]
 
 inputs:
  
