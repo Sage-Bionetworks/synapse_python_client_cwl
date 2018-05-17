@@ -4,7 +4,7 @@ class: CommandLineTool
 
 hints:
   DockerRequirement:
-    dockerPull: quay.io/andrewelamb/synapse_python
+    dockerPull: quay.io/andrewelamb/synapse_python_client
     
 baseCommand: [ python, /usr/local/bin/syn_get.py ]
 
