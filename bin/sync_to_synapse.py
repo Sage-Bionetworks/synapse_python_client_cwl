@@ -4,7 +4,7 @@ from shutil import copyfile
 
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser("Gets file from synapse")
+    parser = argparse.ArgumentParser("Uploads files to synapse")
     parser.add_argument('--manifest_file', type = str)
     parser.add_argument('--config_file', type = str)
     args = parser.parse_args()
