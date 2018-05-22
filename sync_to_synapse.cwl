@@ -8,6 +8,8 @@ hints:
     
 baseCommand: [ python, /usr/local/bin/sync_to_synapse.py ]
 
+stdout: out.txt
+
 inputs:
  
   manifest_file:
@@ -15,7 +17,14 @@ inputs:
     inputBinding:
       prefix: "--manifest_file"
       
-  config_file:
+  synapse_config_file:
     type: File
     inputBinding:
-      prefix: "--config_file"
+      prefix: "--synapse_config_file"
+      
+outputs:
+
+  output:
+    type: File
+    outputBinding:
+      glob: out.txt

@@ -51,13 +51,13 @@ if __name__ == '__main__':
     if args.activity_description is not None:
         manifest_dict["activityDescription"] = args.activity_description
     
-     
     if args.yaml_config_file is not None:
         with open(args.yaml_config_file, 'r') as stream:
             dict = (yaml.load(stream))
-            annotation_cols = [key for key in dict.keys() if key.startswith("annotation")]
-            for col in annotation_cols:
-                 manifest_dict[col.replace("annotation_", "")] = dict[col]
+            if "annotations" in dict:
+                annotations = dict["annotations"]
+                for key in annotations.keys():
+                    manifest_dict[key] = annotations[key]
     
     df = pd.DataFrame(data = manifest_dict)
-    df.to_csv(args.output_file_string, sep = "\t")
+    df.to_csv(args.output_file_string, sep = "\t", index = False)
