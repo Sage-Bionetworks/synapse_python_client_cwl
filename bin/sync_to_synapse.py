@@ -9,9 +9,12 @@ if __name__ == '__main__':
  
     parser = argparse.ArgumentParser("Creates manifest file and syncs to synapse")
     
+    # required
     parser.add_argument('--synapse_config_file', type = str)
     parser.add_argument('--paths', type = str, nargs = '+')
     parser.add_argument('--parent', type = str)
+    
+    # options
     parser.add_argument('--used', 
                         type = str,
                         nargs = '+',
@@ -40,6 +43,7 @@ if __name__ == '__main__':
                         required = False)
     args = parser.parse_args()
     
+    # creates manifest file
     manifest_dict = {"path": args.paths, 
                      "parent": args.parent}
     
@@ -66,6 +70,7 @@ if __name__ == '__main__':
     df = pd.DataFrame(data = manifest_dict)
     df.to_csv(args.manifest_string, sep = "\t", index = False)
     
+    # sync to synapse
     copyfile(args.synapse_config_file,  "./.synapseConfig")
     syn = synapseclient.login()
     synapseutils.sync.syncToSynapse(syn, args.manifest_string)

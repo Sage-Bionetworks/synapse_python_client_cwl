@@ -30,6 +30,7 @@ RUN apt-get update && \
 RUN pip install synapseclient==$VERSION
 
 RUN pip install argparse
+RUN pip install yaml
 
 COPY bin/* /usr/local/bin/
 RUN chmod a+x /usr/local/bin/*
